@@ -66,6 +66,10 @@
                                 <a style="margin: 10px -15px;" class="btn btn-link" href="{{ route('site.home') }}">
                                    <span><i class="fas fa-home"></i></span> {{  __('site.login.goback') }}
                                 </a>
+
+                                <a style="margin: 10px 15px;" class="btn btn-link" href="{{ route('register') }}">
+                                   <span><i class="fas fa-registered"></i></span> {{  __('site.login.register') }}
+                                </a>
                             </div>
                         </div>
                     </form>

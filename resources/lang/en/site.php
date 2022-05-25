@@ -33,7 +33,8 @@ return [
         'sl' => '#',
         'save' => 'Login',
         'email' => 'E-Mail Address',
-        'password' => 'Password'
+        'password' => 'Password',
+        'register' => 'Not Registered Yet!'
     ],
 
    'banner' => [
