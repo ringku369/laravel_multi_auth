@@ -26,7 +26,6 @@ class UserController extends Controller
 
   public function index(Request $request)
   {
-    //return Auth::user('admin');
     $users = User::where(['status'=>1])->take(1)->get();
     return view(self::VIEW_PATH . 'index',compact('users'));
   }

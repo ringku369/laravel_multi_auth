@@ -8,9 +8,14 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 //use App\Permissions\HasPermissionsTrait;
+
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
+
+
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, LogsActivity;
     //use HasPermissionsTrait; //Import The Trait
     public $timestamps = true;
     //protected $guarded = ['id'];
@@ -24,6 +29,17 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    protected static $recordEvents = ['updated','deleted'];
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+        ->logAll()
+        //->logOnly(['name'])
+        ->dontLogIfAttributesChangedOnly(['password'])
+        ->logOnlyDirty();
+    }
 
     /**
      * The attributes that should be cast to native types.

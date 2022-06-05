@@ -53,16 +53,16 @@ class RolePermissionSeeder extends Seeder
                     'site_setting.delete'
                 ]
             ],
-            // [
-            //     'group_parent_name' => 'role-permissions',
-            //     'group_name' => 'user',
-            //     'permissions' => [
-            //         'user.create',
-            //         'user.read',
-            //         'user.update',
-            //         'user.delete'
-            //     ]
-            // ],
+            [
+                'group_parent_name' => 'role-permissions',
+                'group_name' => 'user',
+                'permissions' => [
+                    'user.create',
+                    'user.read',
+                    'user.update',
+                    'user.delete'
+                ]
+            ],
             // [
             //     'group_parent_name' => 'dashboards',
             //     'group_name' => 'dashboard',
@@ -152,11 +152,11 @@ class RolePermissionSeeder extends Seeder
         }
 
         $roles_permission_data = [
-            //['role_id'=>1,'permission_id'=>1],
-            //['role_id'=>1,'permission_id'=>2],
-            //['role_id'=>1,'permission_id'=>3],
-            //['role_id'=>1,'permission_id'=>4],
-            //['role_id'=>1,'permission_id'=>5],
+            ['role_id'=>1,'permission_id'=>1],
+            ['role_id'=>1,'permission_id'=>2],
+            ['role_id'=>1,'permission_id'=>3],
+            ['role_id'=>1,'permission_id'=>4],
+            ['role_id'=>1,'permission_id'=>5],
             ['role_id'=>1,'permission_id'=>7],
             ['role_id'=>1,'permission_id'=>8],
             //['role_id'=>1,'permission_id'=>9],

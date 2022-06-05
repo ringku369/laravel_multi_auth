@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+//use Spatie\Activitylog\Models\Activity;
+use App\Models\ActivityLog;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,6 +61,14 @@ Route::group(['prefix'=>'admin','as'=>'admin.'], function() {
 });
 
 Route::group(['middleware'=>'auth:admin', 'prefix'=>'admin','as'=>'admin.'], function() {
+    
+    Route::get('/log', function(){
+        
+        return ActivityLog::with('admin')->get();
+        return ActivityLog::with('admin')->get()->first();
+        return ActivityLog::with('admin')->get()->last();
+    });
+
     Route::get('/dashboard', ['as'=>'dashboard','uses'=>'App\Http\Controllers\Admin\DashboardController@index']);
 
     Route::group(['prefix'=>'role-permissions'], function(){

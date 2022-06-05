@@ -5,9 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
+
 class Version extends Model
 {
-    use HasFactory;
+    use HasFactory, LogsActivity;
     public $timestamps = true;
     protected $guarded = ['id'];
+
+    protected static $recordEvents = ['updated','deleted'];
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+        ->logAll()
+        //->logOnly(['name'])
+        //->dontLogIfAttributesChangedOnly(['sort'])
+        ->logOnlyDirty();
+    }
 }
