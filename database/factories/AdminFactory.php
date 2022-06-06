@@ -15,6 +15,7 @@ class AdminFactory extends Factory
         return [
             //'name' => $this->faker->name(),
             //'email' => $this->faker->unique()->safeEmail(),
+            'user_type_id' => 1,
             'role_id' => 1,
             'name' => 'Mr. Admin',
             'username' => 'admin',

@@ -16,7 +16,8 @@ class DatabaseSeeder extends Seeder
     {
         //User::truncate();
         $this->call([RolePermissionSeeder::class,SiteSettingSeeder::class,
-        DivisionsTableSeeder::class,DistrictsTableSeeder::class,UpazilasTableSeeder::class]);
+        DivisionsTableSeeder::class,DistrictsTableSeeder::class,UpazilasTableSeeder::class,
+        UsertypesTableSeeder::class]);
         //\App\Models\Role::factory(1)->create();
         \App\Models\User::factory(1)->create();
         \App\Models\Admin::factory(1)->create();
