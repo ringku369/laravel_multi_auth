@@ -19,9 +19,12 @@ class Version extends Model
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
+        ->useLogName('versions')
         ->logAll()
         //->logOnly(['name'])
+        ->setDescriptionForEvent(fn(string $eventName) => "versions has been {$eventName}")
         //->dontLogIfAttributesChangedOnly(['sort'])
-        ->logOnlyDirty();
+        ->logOnlyDirty()
+        ->dontSubmitEmptyLogs();
     }
 }

@@ -35,10 +35,13 @@ class User extends Authenticatable
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
+        ->useLogName('users')
         ->logAll()
         //->logOnly(['name'])
+        ->setDescriptionForEvent(fn(string $eventName) => "users has been {$eventName}")
         ->dontLogIfAttributesChangedOnly(['password'])
-        ->logOnlyDirty();
+        ->logOnlyDirty()
+        ->dontSubmitEmptyLogs();
     }
 
     /**

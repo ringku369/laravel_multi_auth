@@ -64,8 +64,14 @@ Route::group(['middleware'=>'auth:admin', 'prefix'=>'admin','as'=>'admin.'], fun
     
     Route::get('/log', function(){
         
+        //return ActivityLog::inLog(['versions','users'])->get();
+        //return ActivityLog::inLog('versions')->get();
+        return $result = ActivityLog::logNames(['versions','users'])->get();
+
+
         return ActivityLog::with('admin')->get();
-        return ActivityLog::with('admin')->get()->first();
+        return ActivityLog::with('admin')->get();
+        return ActivityLog::with('causer')->get()->first();
         return ActivityLog::with('admin')->get()->last();
     });
 

@@ -5,12 +5,30 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
+
 class ContentCategory extends Model
 {
-    use HasFactory;
+    use HasFactory, LogsActivity;
     public $timestamps = true;
     protected $guarded = ['id'];
     protected $parentColumn = 'parent_id';
+
+    
+    protected static $recordEvents = ['created','updated','deleted'];
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+        ->useLogName('content_ategories')
+        //->logAll()
+        ->logOnly(['name'])
+        ->setDescriptionForEvent(fn(string $eventName) => "content_ategories has been {$eventName}")
+        //->dontLogIfAttributesChangedOnly(['sort'])
+        ->logOnlyDirty()
+        ->dontSubmitEmptyLogs();
+    }
 
     public function contentCategory()
     {

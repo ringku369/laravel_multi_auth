@@ -15,8 +15,12 @@ class CreateAdminsTable extends Migration
     {
         Schema::create('admins', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('role_id');
-            //$table->foreign('role_id', 'users_fk_role_id')->references('id')->on('roles')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->unsignedInteger('user_type_id')->nullable();
+            $table->unsignedInteger('role_id')->nullable();
+            $table->unsignedMediumInteger('division_id')->nullable();
+            $table->unsignedMediumInteger('district_id')->nullable();
+            $table->unsignedMediumInteger('upazila_id')->nullable();
+            
             $table->string('name');
             $table->string('username')->unique();
             $table->string('email')->unique();

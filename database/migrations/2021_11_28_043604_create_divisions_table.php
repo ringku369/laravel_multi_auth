@@ -14,10 +14,13 @@ class CreateDivisionsTable extends Migration
     public function up()
     {
         Schema::create('divisions', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
+            $table->mediumIncrements('id');
+            $table->string('name')->nullable();
+            $table->string('title_en', 191)->nullable();
+            $table->string('title', 300)->nullable();
+            $table->char('bbs_code', 2)->nullable();
 
-            $table->smallInteger('sort')->default(1);
+            //$table->smallInteger('sort')->default(1);
             $table->tinyInteger('status')->default(1);
             $table->integer('created_by')->nullable();
             $table->integer('updated_by')->nullable();
